@@ -1,27 +1,27 @@
 import Link from 'next/link'
 import Layout from '../layout'
+import fetch from 'isomorphic-unfetch'
 
-const Index = () => (
+const Index = props => (
   <Layout>
+    <h1>Users</h1>
     <ul>
-      <li>
-        <Link as="/work/1" href="/work?id=1">
-          <a>作品1</a>
-        </Link>
-      </li>
-      <li>
-        <Link as="/work/2" href="/work?id=2">
-          <a>作品2</a>
-        </Link>
-      </li>
-      <li>
-        <Link as="/work/3" href="/work?id=3">
-          <a>作品3</a>
-        </Link>
-      </li>
+      {props.data.map(employee => (
+        <li key={employee.id}>
+          <p>{employee.employee_name}</p>
+        </li>
+      ))}
     </ul>
-    <p>Hello World</p>
   </Layout>
 )
+
+Index.getInitialProps = async function() {
+  const res = await fetch('http://dummy.restapiexample.com/api/v1/employees')
+  const data = await res.json()
+
+  return {
+    data
+  }
+}
 
 export default Index
