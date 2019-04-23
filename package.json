@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js",
+    "now-build": "next build",
+    "deploy": "next build && next export"
   },
   "keywords": [],
   "author": "Kazuhiro Kobayashi <info@kzhrk.com>",
