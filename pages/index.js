@@ -8,7 +8,9 @@ const Index = props => (
     <ul>
       {props.data.map(employee => (
         <li key={employee.id}>
-          <p>{employee.employee_name}</p>
+          <Link href={`/employee/${employee.id}`}>
+            <a>{employee.employee_name}</a>
+          </Link>
         </li>
       ))}
     </ul>

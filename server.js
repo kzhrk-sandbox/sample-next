@@ -16,6 +16,9 @@ app
       .get('/work/:id', (req, res) => {
         app.render(req, res, '/work', {id: req.params.id })
       })
+      .get('/employee/:id', (req, res) => {
+        app.render(req, res, '/employee', {id: req.params.id})
+      })
       .get('*', (req, res) => {
         return handle(req, res)
       })
